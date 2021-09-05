@@ -1,0 +1,79 @@
+module testbench2();
+ logic clk, reset;
+ logic [63:0]x;
+ logic [3:0] y;
+
+//instance
+counter dut(clk,reset, x[63:0],y);
+
+always
+begin
+clk=1; #50; 
+clk=~clk; #50;
+end
+
+initial
+begin
+reset=1; #25;
+reset=0;
+end
+
+always
+begin
+x[63:0] = 64'h01326754cdfeab98;
+#10;
+assert (y[3:0] == 4'h0) else $error("s0 failed");
+#65;
+assert (y[3:0] == 4'h0) else $error("s0 failed");
+#50;
+assert (y[3:0] == 4'h1) else $error("s1 failed");
+#100;
+assert (y[3:0] == 4'h3) else $error("s2 failed");
+#100;
+assert (y[3:0] == 4'h2) else $error("s3 failed");
+#100;
+assert (y[3:0] == 4'h6) else $error("s4 failed");
+#100;
+assert (y[3:0] == 4'h7) else $error("s5 failed");
+#100;
+assert (y[3:0] == 4'h5) else $error("s6 failed");
+#100;
+assert (y[3:0] == 4'h4) else $error("s7 failed");
+#100;
+assert (y[3:0] == 4'hc) else $error("s8 failed");
+#100;
+assert (y[3:0] == 4'hd) else $error("s9 failed");
+#100;
+assert (y[3:0] == 4'hf) else $error("s10 failed");
+#100;
+assert (y[3:0] == 4'he) else $error("s11 failed");
+#100;
+assert (y[3:0] == 4'ha) else $error("s12 failed");
+#100;
+assert (y[3:0] == 4'hb) else $error("s13 failed");
+#100;
+assert (y[3:0] == 4'h9) else $error("s14 failed");
+#100;
+assert (y[3:0] == 4'h8) else $error("s15 failed");
+#100;
+assert (y[3:0] == 4'h0) else $error("s16 failed");
+#100;
+assert (y[3:0] == 4'h1) else $error("s17 failed");
+#100;
+assert (y[3:0] == 4'h3) else $error("s18 failed");
+#100;
+assert (y[3:0] == 4'h2) else $error("s19 failed");
+#100;
+assert (y[3:0] == 4'h6) else $error("s20 failed");
+#100;
+assert (y[3:0] == 4'h7) else $error("s21 failed");
+#100;
+assert (y[3:0] == 4'h5) else $error("s22 failed");
+#100;
+assert (y[3:0] == 4'h4) else $error("s23 failed");
+#75;
+end
+
+endmodule 
+
+

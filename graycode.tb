@@ -1,0 +1,19 @@
+module testbench1();
+
+ parameter N=4; // make sure that the parameter of the graycode module and the graycode testbench are the same and equal the desired parameter
+
+ logic [N*((2)**(N))-1:0] g;
+//instance
+graycode dut(g[N*((2)**(N))-1:0]);
+
+// self-checking testbench for N from 1 to 4 
+initial
+begin
+#10;
+     if (N==1) assert (g[N*((2)**(N))-1:0] == 2'b01) else $error("graycode generator for N= 1 failed");
+else if (N==2) assert (g[N*((2)**(N))-1:0] == 8'b00_01_11_10) else $error("graycode generator for N= 2 failed");
+else if (N==3) assert (g[N*((2)**(N))-1:0] == 24'b000_001_011_010_110_111_101_100) else $error("graycode generator for N= 3 failed");
+else if (N==4) assert (g[N*((2)**(N))-1:0] == 64'h01326754cdfeab98) else $error("graycode generator for N=4 failed");
+end
+endmodule
+
